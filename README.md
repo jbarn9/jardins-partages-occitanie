@@ -1,10 +1,6 @@
-- 👋 Hi, I’m Julie
-- 👀 I’m interested in coding, reading, writing, going horse riding, walking in nature, doing cakes and cooking little meals
-- 🌱 I’m currently learning PHP, JavaScript, AJAX, JQuery and many more
-- 💞️ I’m looking to collaborate on an web application booking meeting rooms
-- 📫 How to reach me in LinkedIn https://www.linkedin.com/in/julie-barenne-91998818a/
+Projet du Réseau des Jardins partagés d'Occitanie en Symfony 7:
 
-<!---
-jbarn9/jbarn9 is a ✨ special ✨ repository because its `README.md` (this file) appears on your GitHub profile.
-You can click the Preview link to take a look at your changes.
---->
+- Création d'un blog avec EasyAdmin 4 (articles, gestion des pages, gestion du réseau...)
+- Calendrier du réseau avec API Google Calendar
+- Système de recherche sur le Drive (API Google Drive) et ressources locales
+- Map des jardins
