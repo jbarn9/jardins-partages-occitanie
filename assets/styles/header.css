@@ -1,0 +1,62 @@
+/* 
+* HEADER Style
+*/
+/* mentra */
+header{
+    position: fixed;
+    background-color: rgba(255, 255, 255, 0.603);
+    max-width: 2200px; 
+    padding: 0 15px;
+    z-index: 1000;
+}
+p.mentra > .line_mentra{
+    margin-left: 20px;
+    font-size: 0.8em;
+}
+p.mentra{
+    font-size: 3.5em;
+    line-height: 40px;
+    width: fit-content;    
+    color: var(--purple);
+}
+.header-container{
+    width: 70%;
+}
+header{
+    margin:auto 10vw;
+}
+.profile{
+    text-align: center;
+}
+.show-hide{
+    display: none;
+}
+/* header responsive */
+@media (max-width: 1600px) { 
+    .header-container{
+        width: 100%;
+    }
+}
+@media (max-width: 768px) {
+    .div-mantra{
+        display: none;
+    }
+    header{
+        margin: auto 2vw;
+    }
+    .show-hide{
+        display: flex;
+    }
+    .buttons-header{
+        position: absolute;
+        top: 80px;
+        right: 19vw;
+        z-index: 1000;
+    }
+    .logo img{
+        width: 7em;
+    }
+    .header-buttons {
+        justify-content: space-between!important;
+    }
+}

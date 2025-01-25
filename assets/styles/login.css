@@ -1,0 +1,110 @@
+#body-container{
+    width: 100%;
+}
+.form-check-input:checked {
+    background-color: var(--green);
+    border-color: var(--green);
+}
+.form-text{
+    padding: 10px 0 10px;
+}
+.content_dashboard{
+    display: flex;
+}
+.ea .page-login{
+    width: 100%;
+}
+.login-wrapper {
+    margin-block-start: 0!important;
+    max-inline-size: 34rem;
+    padding:40px;
+}
+body.page-login .content_dashboard{
+    margin: 5vw;
+    margin-top: 10rem;
+}
+
+.login-wrapper {
+    background-color: var(--green-light);
+    border-radius: 10px;
+    box-shadow: 0 4px 6px 4px rgba(0,0,0,0.25);
+    z-index: 1;
+}
+.form-control {
+    border-radius: 8px;
+    padding: 0.75rem;
+}
+.form-control{
+    border-radius: 25px!important;
+    padding: 0.75rem!important;
+    border: 1.5px solid var(--gray-border)!important;
+}
+/* Surcharge des styles EasyAdmin */
+.ea-login-page {
+    background: none !important;
+}
+
+.ea-login .login-wrapper {
+    margin-block-start: 0 !important;
+    width: 100%;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.ea-login .login-form {
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.1);
+    padding: 2rem;
+}
+
+.ea-login .form-control {
+    border-radius: 8px;
+    padding: 0.75rem;
+}
+
+/* BUTTONS style*/
+.btn.btn-primary, .btn-primary:hover, .btn-primary:active, .btn-primary:visited  {
+    background-color: rgba(0, 0, 0, 0)!important;
+    color: black!important;
+    font-size: 16px!important;
+    font-weight: 200!important;
+    letter-spacing: 1px!important;
+    padding: 4px 10px 8px!important;
+    outline: 0!important;
+    border: 1px solid var(--gray-border)!important;
+    cursor: pointer!important;
+    position: relative!important;
+    user-select: none!important;
+    -webkit-user-select: none!important;
+    touch-action: manipulation!important;
+    font-size: var(--font-size-btn)!important;
+    font-weight: 600!important;
+    border-radius: 0!important;
+}
+  
+.btn.btn-primary:after {
+    content: "";
+    background: var(--turquoise);
+    width: 100%;
+    z-index: -1;
+    position: absolute;
+    height: 100%;
+    top: 5px;
+    left: 5px;
+    transition: 0.2s;
+    transform: rotate(-1deg);
+}
+
+.btn.btn-primary:hover {
+    background: #764ba2;
+    transform: translateY(-2px);
+}
+
+.btn.btn-primary:hover:after {
+    top: 0px;
+    left: 0px;    
+    transform: rotate(0deg);
+}
+footer{
+    display: none;
+}

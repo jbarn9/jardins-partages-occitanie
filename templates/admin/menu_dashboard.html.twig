@@ -1,0 +1,73 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	Dashboard | Réseau des Semeurs de Jardins
+{% endblock %}
+
+{% block content %}
+	<div
+		class="container-fluid d-flex flex-column main-container-style">
+		{# Administrator page Content #}
+		<div class="content_dashboard josefinSans">
+			<h1 class="kgSecondChancesSolid">Bienvenue
+				{{ app.user.login }}
+				!</h1>
+			<h2 class="text-bold">Vous êtes connectés en tant que :
+				{% for role in app.user.roles %}
+					{% if role == 'ROLE_ADMIN' %}
+						Administrateur
+					{% elseif role == 'ROLE_EDITOR' %}
+						Editeur
+					{% endif %}
+				{% endfor %}
+			</h2>
+			<div class="row row-cols-1 row-cols-md-2 g-4 d-flex flex-row">
+				<a href="{{ path('app_admin_profile') }}">
+					<div class="col h-100">
+						<div class="card card-profile flex-row h-100">
+							<div class="col-2 align-content-center">
+								<div class="d-flex justify-content-center">
+									<img src="{{ asset('img/icons/gardener.png') }}" class="rounded img-fluid" alt="icône pour le profil" width="55">
+								</div>
+							</div>
+							<div class="card-body col-10">
+								<h3>Gérer le profil</h3>
+								<p>Modifier mes informations personnelles</p>
+							</div>
+						</div>
+					</div>
+				</a>
+				<a href="{{ path('admin_crud') }}">
+					<div class="col h-100">
+						<div class="card card-profile flex-row h-100">
+							<div class="col-2 align-content-center">
+								<div class="d-flex justify-content-center">
+									<img src="{{ asset('img/icons/repair-tools.png') }}" class="rounded img-fluid" alt="icône pour le réseau" width="55">
+								</div>
+							</div>
+							<div class="card-body col-10">
+								<h3>Gérer le réseau</h3>
+								<p>Ajouter, modifier, supprimer des éléments du réseau</p>
+							</div>
+						</div>
+					</div>
+				</a>
+				<a href="{{ path('app_admin_notifications') }}">
+					<div class="col h-100">
+						<div class="card card-profile flex-row h-100">
+							<div class="col-2 align-content-center">
+								<div class="d-flex justify-content-center">
+									<img src="{{ asset('img/icons/bell.png') }}" class="rounded img-fluid" alt="icône pour les notifications" width="55">
+								</div>
+							</div>
+							<div class="card-body col-10">
+								<h3>Gérer les notifications</h3>
+								<p>Consulter et supprimer les notifications</p>
+							</div>
+						</div>
+					</div>
+				</a>
+			</div>
+		</div>
+	</div>
+{% endblock %}

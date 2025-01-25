@@ -1,5 +1,11 @@
 controllers:
-    resource:
-        path: ../src/Controller/
-        namespace: App\Controller
-    type: attribute
+  resource:
+    path: ../src/Controller/
+    namespace: App\Controller
+  type: attribute
+
+fm_elfinder:
+  resource: "@FMElfinderBundle/Resources/config/routing.yaml"
+oauth2:
+  resource: "@LeagueOAuth2ServerBundle/Resources/config/routes.php"
+  type: php

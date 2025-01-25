@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+{% block stylesheets %}
+	<link rel="stylesheet" href="{{ asset('styles/search.css') }}">
+{% endblock %}
+{% block title %}
+	Accueil | Réseau des Semeurs de Jardins
+{% endblock %}
+{% block content %}
+	<div class="container main-container-style pt-5">
+		<ul class="nav nav-tabs justify-content-center">
+			<li class="nav-item col-lg-3 col-6">
+				<a class="nav-link {{ app.request.pathinfo == '/search' ? 'active' : '' }}" aria-current="page" href="{{path('app_search')}}">Recherche locale</a>
+			</li>
+			<li class="nav-item col-lg-3 col-6">
+				<a class="nav-link {{ app.request.pathinfo == '/search/drive' or app.request.pathinfo starts with '/search/drive/' ? 'active' : '' }}" href="{{path('app_search_drive')}}">Recherche Drive</a>
+			</li>
+		</ul>
+	</div>
+	<div class="container d-flex justify-content-center">
+		<div class="form-group col-lg-5 col-10">
+			<div class="form-widget row">
+				<div class="d-flex justify-content-between col-12">
+					<input type="text" id="searchInput" name="searchInput" class="form-control" value="" required="" autofocus="" placeholder="Faire une recherche ici"/>
+					<span class="position-absolute icon-search">
+						<i class="fa-solid fa-search"></i>
+					</span>
+					<div class="col-3 align-content-center mx-3">
+						<button type="button" class="button btn-secondary-turquoise" onclick="displayAllDriveResults()">Rechercher</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="container mb-5 pb-3" id="search_results">
+		{% if app.request.pathinfo == '/search/drive' or app.request.pathinfo starts with '/search/drive/' %}
+			{% include 'search/drive.html.twig' %}
+		{% endif %}
+	</div>
+	<div id="loader" class="position-absolute top-50 start-50 translate-middle d-none">
+		<i class="fa-solid fa-spinner"></i>
+	</div>
+{% endblock %}
+{% block js %}
+	<script src="{{asset('js/main.js')}}" defer></script>
+	<script src="{{asset('js/searchResults.js')}}" defer></script>
+{% endblock %}

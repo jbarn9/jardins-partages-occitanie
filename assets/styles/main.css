@@ -1,0 +1,247 @@
+/* https://fontsfree.pro */
+@font-face {
+    font-family: 'KG Second Chances Sketch';
+    src: 
+    url('../fonts/KGSecondChances/KGSecondChancesSketch.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'KG Second Chances Solid';
+    src:
+    url('../fonts/KGSecondChances/KGSecondchancesSolid.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Jenna Sue';
+    src: url('../fonts/jennaSue/JennaSue.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+:root {
+    --green: #99cd47;
+    --green-rgb:rgba(153, 205, 71, 0.44); 
+    --dark-green : #729D2D;
+    --turquoise: rgb(48, 175, 133);
+    --turquoise-light:rgba(48, 175, 133, 0.29);
+    --green-light: #CDEEC5;
+    --yellow: #FFDD13;
+    --orange : #FB812F;
+    --purple : #C53786;
+    --gray-border : #5B5353;
+    --background-color : white;
+    --second-bg-color : #FBF9EA;
+    --primary-font : "Josefin Sans", serif;
+    --secondary-font : 'KG Second Chances Solid';
+    --tertiary-font : 'Jenna Sue'; 
+    --font-size-h1 : 1.75em;
+    --font-size-h2 : 1.5em;
+    --font-size-p : 1.3em;
+    --font-size-btn : 1em;
+    --box-shadow-card : 4px 6px 4px 0 rgba(0, 0, 0, 0.25);
+}
+body {
+    background-color: var(--background-color);
+}
+.home-container{
+    margin-left: 150px;
+}
+a, p, .content{
+    font-family: var(--primary-font);
+    font-optical-sizing: auto;
+    font-weight: 300;
+    font-style: normal;
+}
+/* FONTS */
+.jennaSue{
+    font-family: var(--tertiary-font);
+}
+.kgSecondChancesSolid{
+    font-family: var(--secondary-font);
+}
+h1{
+    font-size: var(--font-size-h1)!important;
+}
+h2{
+    font-size: var(--font-size-h2)!important;
+}
+.josefinSans{
+    font-family: var(--primary-font);
+}   
+p{
+    font-size: var(--font-size-p);
+}
+.content_main {
+    margin: auto 10vw;
+    min-height: 26em;
+}
+/* BUTTONS style*/
+button.main-button{
+    color: black;
+    font-size: 16px;
+    font-weight: 200;
+    letter-spacing: 1px;
+    padding: 4px 10px 8px;
+    outline: 0;
+    border: 1px solid var(--gray-border);
+    cursor: pointer;
+    position: relative;
+    background-color: rgba(0, 0, 0, 0);
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    font-size: var(--font-size-btn);
+    font-weight: 600;
+}
+  
+button.main-button:after {
+    content: "";
+    background-color: var(--turquoise);
+    width: 100%;
+    z-index: -1;
+    position: absolute;
+    height: 100%;
+    top: 5px;
+    left: 5px;
+    transition: 0.2s;
+    transform: rotate(-1deg);
+}
+
+button.main-button:hover:after {
+    top: 0px;
+    left: 0px;    
+    transform: rotate(0deg);
+}
+.previous-page{
+    padding: 20px 0px;
+    font-weight: 600;
+}
+/* 
+**
+** HOME PAGE
+**
+*/
+
+/* btn home */
+.button.btn-secondary-green{
+    background-color: var(--green);
+    color: black;
+    font-weight: 600;
+    border-radius: 5px;
+    border: 0px;
+    padding: 10px;
+    box-shadow: var(--box-shadow-card);
+}
+.home_picture{
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    overflow: hidden;
+    margin: auto 10vw;
+    height: 500px;  
+}
+.buttons-header{
+    align-content: center;
+}
+.post-container > .empty-post{
+    margin: 4em auto;
+}
+footer{
+    font-size: 0.9em;
+    line-height: normal;
+    /* position: absolute; */
+    /* bottom: 0; */
+    /* margin: 10px auto 10px auto; */
+    justify-content: center;
+    display: flex;
+    /* width: 80%; */
+}
+footer span{
+    margin: 0 0.5em;
+}
+.previous-icon{
+    margin-right: 10px;
+}
+.post-container{
+    padding-top: 10px;
+}
+.main-container-style{
+    margin-top: 10rem;
+}
+/* 
+**
+** SEARCH PAGE
+**
+*/
+
+.button.btn-secondary-turquoise{
+    background-color: var(--turquoise);
+    color: white;
+    border-radius: 5px;
+    border: 0px;
+    padding: 10px;
+    box-shadow: var(--box-shadow-card);
+}
+
+.fa-spinner{
+    font-size: 4em;
+    animation: spin 2s linear infinite;
+}
+.form-select:selected{
+    background-color: var(--turquoise);
+    color: white;
+}
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    50% { transform: rotate(180deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* 
+**
+** MEDIA QUERIES
+**
+*/
+@media (max-width: 768px) {
+    :root {
+        --font-size-h1 : 1.5em;
+        --font-size-h2 : 1.2em;
+        --font-size-p : 1rem;
+    }
+    .home-container{
+        margin-left: 0px;
+    }
+    .content_main {
+        margin: auto;
+        min-height: 26em;
+    }
+    .content {
+        margin: auto 1vw;
+    }
+    button.main-button{
+        font-size: 0.8em;
+    }
+    
+    header{
+        padding: 0;
+    }
+    .home_picture{
+        margin: auto 2vw;
+        height: 180px;
+    }
+    .link-text{
+        font-size: 0.8em;
+    }  
+    .fa-search{
+        display: none;
+    }  
+    h1{
+        font-size: 1.2em!important;
+    }
+    h2{
+        font-size: 1em!important;
+    }
+}
+
+

@@ -1,0 +1,26 @@
+/* .sidebar-wrapper {
+    position: absolute;
+} */
+
+#main-menu .menu .menu-icon {
+    color: black;
+    text-align: center;
+}
+#main-menu .menu .submenu a {
+    color: var(--sidebar-menu-submenu-color);
+    padding: 3px 0 3px 10px;
+}
+
+/**
+* Index table
+**/
+table tr{
+    border: 1px solid gray;
+}
+/* .datagrid td, .datagrid th {
+    padding: 15px;
+} */
+
+table tr:last-child td:first-child {
+    border-bottom-left-radius: 10px;
+}

@@ -1,0 +1,69 @@
+{% extends 'base.html.twig' %}
+{% block stylesheets %}
+	<link rel="stylesheet" href="{{ asset('styles/form_contact.css') }}">
+{% endblock %}
+{% block title %}
+	Contact | Réseau des Semeurs de Jardins
+{% endblock %}
+{% block content %}
+	<div
+		class="container-fluid d-flex flex-column main-container-style">
+		{# FORM #}
+		{{ form_start(form, { 'attr': { 'class': 'content_main form-contact py-5', 'id': 'form-contact' } }) }}
+		<div class="container-fluid" style="margin-bottom: 10rem;">
+			<h1 class="kgSecondChancesSolid text-center">Contactez-nous ou consultez la carte pour nous retrouver</h1>
+			{# FLASH MESSAGES #}
+			{% for message in app.flashes('success') %}
+				<div class="flash-notice alert alert-success">
+					{{ message }}
+				</div>
+			{% endfor %}
+			{% for message in app.flashes('error') %}
+				<div class="flash-notice alert alert-danger">
+					{{ message }}
+				</div>
+			{% endfor %}
+			{% if not success %}
+				<div class="container-fluid d-flex flex-column mt-lg-5" id="simple-list-item-1">
+					<h2 class="fw-bolder">Nous contacter</h2>
+					<div class="row">
+						<div class="form-group col-sm-6">
+							<label for="name">Nom</label>
+							{{ form_widget(form.name, { 'attr': { 'class': 'form-control' } }) }}
+						</div>
+						<div class="form-group col-sm-6">
+							<label for="email">Email</label>
+							{{ form_widget(form.email, { 'attr': { 'class': 'form-control' } }) }}
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="label">Objet</label>
+						{{ form_widget(form.id, { 'attr': { 'class': 'form-control form-select' } }) }}
+					</div>
+					<div class="form-group form-group-textarea">
+						<label for="message">Message</label>
+						{{ form_widget(form.message, { 'attr': { 'class': 'form-control' } }) }}
+					</div>
+					{# RECAPTCHA #}
+					<div class="g-recaptcha" data-sitekey="6Lf_274qAAAAAJFQyhMO9uAKDjpm8I4m0XF68T5I"></div>
+
+					<button type="submit" class="button btn-secondary-green my-3 col-lg-2 col-3">Envoyer</button>
+					{{ form_end(form) }}
+				</div>
+			{% endif %}
+			<div class="container-fluid d-flex flex-column mt-lg-5" id="simple-list-item-2">
+				<div class="row">
+					<h2 class="fw-bolder">Où nous trouver ?</h2>
+					<p>
+						<span class="fw-bolder">Calculez votre itinéraire</span><br>
+						Notre local est situé à Montpellier, dans le parc Magnol. Nos permanences sont tous les jeudis de 14h à 17h</p>
+					<iframe src="https://cartes.app/?allez=Jardins partagés Magnol|w1090232897|3.8633|43.6175#18/43.617829/3.862399" style=" width: 100%; height: 36rem; margin: 0 auto; margin-bottom: 5vh; display: block; border-radius: 1rem; border: 3px solid var(--darkColor); box-shadow: rgba(0, 0, 0, 0.1) 0px 20px 25px -5px, rgba(0, 0, 0, 0.04) 0px 10px 10px -5px; "></iframe>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}
+{% block js %}
+	<script src="{{ asset('js/form.js') }}"></script>
+	<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+{% endblock %}

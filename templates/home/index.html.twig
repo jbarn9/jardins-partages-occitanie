@@ -1,0 +1,116 @@
+{% extends 'base.html.twig' %}
+{% block stylesheets %}
+	<link rel="stylesheet" href="{{ asset('styles/calendar.css') }}">
+{% endblock %}
+{% block title %}
+	Accueil | Réseau des Semeurs de Jardins
+{% endblock %}
+{% block content %}
+	<div class="container-fluid d-flex flex-column main-container-style">
+		{% for message in app.flashes('success') %}
+			<div class="flash-notice alert alert-success">
+				{{ message }}
+			</div>
+		{% endfor %}
+		{% for message in app.flashes('error') %}
+			<div class="flash-notice alert alert-danger">
+				{{ message }}
+			</div>
+		{% endfor %}
+		{# Administrator page Content #}
+		<div
+			class="content_home josefinSans">
+			{# picture #}
+			<div class="home_picture" style="background-image: url('{{ asset('uploads/profiles/SDJ/banner/' ~ app.request.attributes.get('header_data').assoBanner) }}');"></div>
+			<div
+				class="content_main">
+				{# subMenu #}
+				<div class="d-flex flex-column p-2">
+					<div class="dropdown d-flex flex-row justify-content-center">
+						{% for page in pages %}
+							<div class="btn-group p-lg-2">
+								{% if page.tabsPage is not empty and page.tabsPage is defined %}
+									{% for tab in page.tabsPage %}{% endfor %}
+									<button
+										class="button btn-secondary-green dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+										{# {{dump(page.tabsPage)}} #}
+										{{page.name}}
+									</button>
+									<ul class="dropdown-menu">
+										{% for tab in page.tabsPage %}
+											<li>
+												<a class="dropdown-item" href="{{path('app_home', {'slug': tab.slug})}}">{{tab.label}}</a>
+											</li>
+										{% endfor %}
+									</ul>
+								{% else %}
+									<button class="button btn-secondary-green" type="button">
+										<a href="{{path('app_home', {'slug': page.slug})}}" class="dropdown-item">{{page.name}}</a>
+									</button>
+								{% endif %}
+							</div>
+						{% endfor %}
+
+					</div>
+					{% if backToList is defined %}
+						{% if backToList %}
+							<a href="{{path('app_home', {'slug': slug})}}" class="nav-link py-lg-4 py-2"><img src="{{asset('img/icons/previous.png')}}" class="previous-icon" alt="Retour à la liste">Retour à la liste</a>
+						{% endif %}
+					{% endif %}
+					{% for page in pages %}
+						{% if page.tabsPage is not empty and page.tabsPage is defined %}
+							{% for tab in page.tabsPage %}
+								{% if tab.slug == slug %}
+									<nav aria-label="breadcrumb">
+										<ol class="breadcrumb">
+											<li class="breadcrumb-item" aria-current="page">Accueil</li>
+											<li class="breadcrumb-item" aria-current="page">{{page.name}}</li>
+											<li class="breadcrumb-item active" aria-current="page">{{tab.label}}</li>
+										</ol>
+									</nav>
+								{% endif %}
+							{% endfor %}
+						{% endif %}
+					{% endfor %}
+					{# Posts #}
+					{% if slug != 'coming' %}
+						{% if posts is not empty %}
+							{# if posts array is over 1 then it displays the posts list #}
+							{% if posts|length > 1 %}
+								<div class="d-flex justify-content-end p-lg-2">
+									<select class="form-select" name="order" id="order" onchange="orderPosts()" aria-label="Default select example" style="width: fit-content;">
+										<option value="ASC" {% if order == 'ASC' %} selected {% endif %}>Du plus ancien au plus récent</option>
+										<option value="DESC" {% if order == 'DESC' %} selected {% endif %}>Du plus récent au plus ancien</option>
+									</select>
+								</div>
+								<div class="row row-cols-1 row-cols-md-1 g-4 d-flex flex-row" id="postslist-container">
+									{% include 'home/postslist.html.twig' with {'slug': slug} %}
+								</div>
+							{% else %}
+								{% for post in posts %}
+									<div class="post-container">
+										<h2>{{ post.title|raw }}</h2>
+										{# {% for category in post.category %}																																													{% endfor %} #}
+										<div class="post-content">{{ post.content|raw }}</div>
+									</div>
+								{% endfor %}
+							{% endif %}
+						{% else %}
+							<div class="post-container">
+								<h2 class="empty-post">Aucun article trouvé</h2>
+							</div>
+						{% endif %}
+					{% else %}
+						<div class="col-lg-4 eventsCard coming-soon" id="eventsCard"></div>
+						<div class="position-absolute top-50 start-50 translate-end d-none" id="loader">
+							<i class="fa-solid fa-spinner"></i>
+						</div>
+					{% endif %}
+				</div>
+			</div>
+		</div>
+	{% endblock %}
+	{% block js %}
+		<script src="{{asset('js/form.js')}}"></script>
+		<script src="{{asset('js/calendar.js')}}" defer></script>
+	{% endblock %}

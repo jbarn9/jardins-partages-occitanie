@@ -1,0 +1,62 @@
+<ul class="navbar-nav h-100">
+	<div
+		class="d-flex h-100">
+		<!-- Sidebar -->
+		<div id="sidebar" class="h-100">
+			<div
+				class="d-flex flex-column h-100">
+				{# SDJ logo #}
+				<div class="d-flex justify-content-center">
+					<a class="logo" href="{{ path('app_home') }}" target="_blank">
+						<img src="{{ asset('uploads/profiles/SDJ/logo/' ~ app.request.attributes.get('header_data').assoLogo) }}" width="150" height="100">
+					</a>
+				</div>
+				{# Menu #}
+				<nav class="nav flex-column">
+					<a class="nav-link {{ app.request.attributes.get('_route') == 'app_home' ? 'active' : '' }}" href="{{ path('app_home') }}">
+						<span class="me-2">
+							<img src="{{asset("img/icons/nichoir_sans_pied.png")}}" width="25" height="25">
+						</span>
+						Blog - Accueil
+					</a>
+					<a class="nav-link {{ app.request.attributes.get('_route') == 'app_search' ? 'active' : '' }}" href="{{ path('app_search') }}">
+						<span class="me-2">
+							<img src="{{asset("img/icons/plantain.png")}}" width="20" height="25">
+						</span>
+						Ressources
+					</a>
+					<a class="nav-link {{ app.request.attributes.get('_route') == 'app_google_calendar' ? 'active' : '' }}" href="{{ path('app_google_calendar') }}">
+						<span class="me-2">
+							<img src="{{asset("img/icons/calendar.png")}}" width="25" height="25">
+						</span>
+						Calendrier
+					</a>
+					<a class="nav-link " href="">
+						<span class="me-2">
+							<img src="{{asset("img/icons/maps.png")}}" width="25" height="25">
+						</span>
+						Carte des jardins
+					</a>
+				</nav>
+				<div class="coordinates-asso align-content-end justify-content-center h-100 px-3 py-5">
+					<p class="contact-us text-center fw-bolder fs-5">Contactez-nous</p>
+					<p class="street">
+						{{ app.request.attributes.get('header_data').assoAddress ?? '' }}
+					</p>
+					<p class="city">
+						{{ app.request.attributes.get('header_data').assoDescription ?? '' }}
+					</p>
+					<p class="color-green text-center fw-bolder">
+						<a href="{{ path('app_contact') }}#simple-list-item-2" class="color-green fw-bolder">Accès à la carte</a>
+					</p>
+					<p class="email">
+						<i class="fa-solid fa-envelope"></i>
+						<a href="mailto:{{ app.request.attributes.get('header_data').assoEmail ?? '' }}" class="fw-bolder">{{ app.request.attributes.get('header_data').assoEmail ?? '' }}</a>
+					</p>
+					<p class="phone">
+						<i class="fa-solid fa-phone"></i>
+						{{ app.request.attributes.get('header_data').assoPhone ?? '' }}
+					</p>
+				</div>
+			</div>
+		</ul>

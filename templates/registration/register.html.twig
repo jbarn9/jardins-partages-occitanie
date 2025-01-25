@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	Enregistrer un nouveau compte
+{% endblock %}
+
+{% block body %}
+	{% for message in app.flashes('success') %}
+		<div class="flash-notice alert alert-success">
+			{{ message }}
+		</div>
+	{% endfor %}
+	{% for message in app.flashes('error') %}
+		<div class="flash-notice alert alert-danger">
+			{{ message }}
+		</div>
+	{% endfor %}
+	<h1 class="form-title">Enregistrer un nouveau réseau</h1>
+
+	{{ form_errors(registrationForm) }}
+
+	{{ form_start(registrationForm, {'method': 'POST', 'action': path('admin_registration')}) }}
+	{{ form_row(registrationForm.email, {
+            label: 'E-mail'
+        }) }}
+	{{ form_row(registrationForm.login, {
+            label: 'Login'
+        }) }}
+	{{ form_row(registrationForm.firstname, {
+            label: 'Prénom'
+        }) }}
+	{{ form_row(registrationForm.lastname, {
+            label: 'Nom'
+        }) }}
+	{{ form_row(registrationForm.roles, {
+            'attr': {'class': 'form-select'},
+            'label_attr': {'class': 'form-label'}
+        }) }}
+	{{ form_row(registrationForm.password )}}
+
+	{{ form_row(registrationForm.user_asso, {
+		'attr': {'class': 'form-select'},
+		'label_attr': {'class': 'form-label'}
+	}) }}
+	{{ form_row(registrationForm.agreeTerms) }}
+	<button type="submit" class="btn">Inscrire</button>
+	{{ form_end(registrationForm) }}
+{% endblock %}

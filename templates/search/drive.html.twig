@@ -1,0 +1,69 @@
+<div class="container py-4">
+	<select onchange="orderPosts()" class="form-select form-select-sm" name="order" id="order" aria-label=".form-select-sm example" style="width: fit-content;">
+		<option value="1sTXBydEI27J0mkwM-A50jXKRLpCsD4vI" {% if files[page][0].parents[0] == '1sTXBydEI27J0mkwM-A50jXKRLpCsD4vI' %} selected {% endif %}>Dossier de Robert Morez</option>
+		<option value="1-HPm2j0bllynbUOkOj4xe6AhH0KMt9dQ" {% if files[page][0].parents[0] == '1-HPm2j0bllynbUOkOj4xe6AhH0KMt9dQ' %} selected {% endif %}>Dossier du RSJ</option>
+	</select>
+	{{dump(files[page][0].parents[0])}}
+</div>
+<div class="container">
+	{% if message is not null %}
+		<div class="alert alert-primary" role="alert">
+			{{ message }}
+		</div>
+	{% else %}
+
+		{% for file in files[page] %}
+			<a href="{{ file.webViewLink }}" target="_blank">
+				<div class="card my-3 card-profile">
+					<div class="card-body">
+						<h5 class="card-title" name="{{ file.name }}">{{ file.name }}</h5>
+						<p class="card-text">{{ file.description ? file.description : 'Aucune description' }}</p>
+						<div class="container">
+							<div class="row">
+								{% for parent in file.parents %}
+									<div class="col">
+										<p class="card-text card-folder">{{ parent == '1sTXBydEI27J0mkwM-A50jXKRLpCsD4vI' ? 'Dossier R. Morez' : 'Dossier RSJ' }}</p>
+									</div>
+								{% endfor %}
+							</div>
+						</div>
+					</div>
+					<div class="card-footer">
+						<p class="card-actions">Actions</p>
+						<a class="card-text" href="{{ file.webContentLink }}" target="_blank">
+							<i class="fa-solid fa-file-pdf"></i>
+						</a>
+					</div>
+				</div>
+			</a>
+		{% endfor %}
+	{% endif %}
+</div>
+{% if files is defined and files|length > 0 %}
+	<div class="container">
+		<nav aria-label="navigation-page" class="d-flex justify-content-center py-3">
+			<ul class="pagination">
+				{% if page > 0 %}
+					<li class="page-item">
+						<a class="page-link" href="{{ path('app_search_drive', {'page': page - 1}) }}" aria-label="Previous">
+							<span aria-hidden="true">&laquo;</span>
+							<span class="sr-only">Previous</span>
+						</a>
+					</li>
+				{% endif %}
+				{% for file in files %}
+					<li class="page-item">
+						<a class="page-link {{ page == loop.index - 1 ? 'active' : '' }}" href="{{ path('app_search_drive', {'page': loop.index - 1}) }}">{{loop.index}}</a>
+					</li>
+				{% endfor %}
+				{% if page < files|length - 1 %}
+					<li class="page-item">
+						<a class="page-link" href="{{ path('app_search_drive', {'page': page + 1}) }}" aria-label="Next">
+							<span aria-hidden="true">&raquo;</span>
+							<span class="sr-only">Next</span>
+						</a>
+					</li>
+				{% endif %}
+			</ul>
+		</nav>
+	{% endif %}

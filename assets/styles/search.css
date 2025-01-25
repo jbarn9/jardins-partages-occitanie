@@ -1,0 +1,40 @@
+.nav-item:hover{
+   cursor: pointer;
+}
+.form-control{
+    border-radius: 25px!important;
+    padding: 0.75rem!important;
+    border: 1.5px solid var(--gray-border)!important;
+    margin: 2rem auto;
+}
+input[type="text"] {
+	background: var(--turquoise-light);
+}
+input[type="text"]:focus {
+	background: var(--turquoise-light);
+}
+.icon-search{
+    top: 33%;
+    transform: translateY(-53%);
+    left: 57%;
+}
+.card-folder{
+    border: 1px solid var(--gray-border);
+    border-radius: 4px;
+    width: fit-content;
+    padding: 4px;
+    box-shadow: 4px 3px 3px 1px var(--green-light);
+    font-size: 1.1em;
+}
+.card-actions{
+    font-size: 1em;
+    margin-bottom: 0;
+}
+.fa-solid .fa-file-pdf{
+    font-size: 1.3em;
+}
+@media (max-width: 768px) {
+    .nav-tabs .nav-link{
+        font-size: 0.8em;
+    }
+}

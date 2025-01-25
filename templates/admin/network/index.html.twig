@@ -1,0 +1,113 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	{{ pageTitle }}
+{% endblock %}
+
+{% block body %}
+	<div
+		id="body-container" class="d-flex flex-row">
+		{# Main navigation #}
+		<nav>
+			<div
+				class="d-none d-lg-block">
+				{# Display on large screens #}
+				{% include 'navbar/navbar-lg.html.twig'%}
+			</div>
+			<div
+				id="navbar-mobile" class="container-fluid fixed-bottom d-lg-none">
+				{# Display on medium and little screens #}
+				{% include 'navbar/navbar-mobile.html.twig' %}
+			</div>
+		</nav>
+		<div
+			class="container-fluid flex-column">
+			{# Header #}
+			<header class="w-100 mx-auto p-sm-0 px-sm-0">
+				{% include 'header/header.html.twig' %}
+			</header>
+			<div class="container-fluid d-flex flex-column mt-lg-5">
+				{% for message in app.flashes('success') %}
+					<div class="flash-notice alert alert-success">
+						{{ message }}
+					</div>
+				{% endfor %}
+				{% for message in app.flashes('error') %}
+					<div class="flash-notice alert alert-danger">
+						{{ message }}
+					</div>
+				{% endfor %}
+				<div class="previous-page">
+					<a href="{{ path('admin') }}">Retour à la page précédente</a>
+				</div>
+				{# Administrator page Content #}
+				<div class="content_dashboard update-content josefinSans">
+					<h1>Profil du Réseau
+						{% if asso.acronyme is not empty %}
+							{{ asso.acronyme }}
+						{% endif %}
+					</h1>
+					<div class="container-fluid">
+						<div class="d-flex flex-row flex-wrap">
+							<div class="col-lg-6 p-3">
+								<h2>Informations du réseau</h2>
+								<p>Nom :
+									{{ asso.name }}</p>
+
+								<p>Mantra :
+									{% if asso.mantra is not null %}
+										{{ asso.mantra }}
+									{% else %}
+										<span class="text-muted">Non renseigné</span>
+									{% endif %}
+								</p>
+								<p>Date de création :
+									{{ asso.foundedAt|date('d/m/Y') }}</p>
+								<p>Téléphone :
+									{% if asso.mobile is not empty %}
+										{{ asso.mobile }}
+									{% else %}
+										<span class="text-muted">Non renseigné</span>
+									{% endif %}
+								</p>
+								<p>Email :
+									{% if asso.email is not empty %}
+										{{ asso.email }}
+									{% else %}
+										<span class="text-muted">Non renseigné</span>
+									{% endif %}
+								</p>
+								<p>Description :
+									{% if asso.description is not empty %}
+										{{ asso.description }}
+									{% else %}
+										<span class="text-muted">Non renseigné</span>
+									{% endif %}
+								</p>
+							</div>
+							<div class="col-lg-6 p-3">
+								<h2>Logo</h2>
+								<p>
+									{% if asso.logo is not null%}
+										<img src="{{ asset('uploads/profiles/SDJ/logo/mini/300x300-' ~ asso.logo) }}" alt="Logo de l'association" class="profile-picture">
+									{% else %}
+										<span class="text-muted">Non renseigné</span>
+									{% endif %}
+								</p>
+								<h2>Bannière</h2>
+								<p>
+									{% if asso.banner is not empty %}
+										<img src="{{ asset('uploads/profiles/SDJ/banner/mini/500x500-' ~ asso.banner) }}" alt="Bannière de l'association" class="profile-picture">
+									{% else %}
+										<span class="text-muted">Non renseigné</span>
+									{% endif %}
+								</p>
+							</div>
+						</div>
+					</div>
+					<a href="{{ path('app_admin_network_update', {'id': asso.id}) }}" class="btn btn-primary">Modifier</a>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}

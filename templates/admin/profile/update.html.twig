@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	Gestion du profil | Réseau SDJ
+{% endblock %}
+
+{% block content %}
+
+	<div class="container-fluid d-flex flex-column mt-lg-5">
+		<div class="content_main">
+			<div class="previous-page">
+				<a href="{{ path('app_admin_profile') }}" class="nav-link py-lg-4 py-2"><img src="{{asset('img/icons/previous.png')}}" class="previous-icon" alt="Retour icône">Retour à la page précédente</a>
+			</div>
+			{% for message in app.flashes('success') %}
+				<div class="flash-notice alert alert-success">
+					{{ message }}
+				</div>
+			{% endfor %}
+			{% for message in app.flashes('error') %}
+				<div class="flash-notice alert alert-danger">
+					{{ message }}
+				</div>
+			{% endfor %}
+			{# Administrator page Content #}
+			<div class="content_dashboard josefinSans">
+				{{ form_start(form, { 'attr': { 'class': 'form' }, 'method': 'POST', 'action': path('app_admin_profile_update') }) }}
+				{{form_row(form.login)}}
+				{{form_row(form.firstname)}}
+				{{form_row(form.lastname)}}
+				{{form_row(form.mobile)}}
+				{{form_row(form.img)}}
+				<div class="py-2">
+					{{ form_row(form.submit) }}
+				</div>
+				{{ form_end(form) }}
+			</div>
+		</div>
+	</div>
+{% endblock %}

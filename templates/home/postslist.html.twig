@@ -1,0 +1,44 @@
+{% for post in posts %}
+	{% if post.status == true %}
+		<a href="{{path('app_home_post', {'slug': slug, 'id': post.id})}}">
+			<div class="col h-100">
+				<div class="card card-profile h-100 p-3">
+					<div class="align-content-center">
+						<h3>{{ post.title|raw }}</h3>
+						<p>{{ post.content|raw|striptags|slice(0, 100) }}...</p>
+					</div>
+					<div class="card-body p-0">
+						<div class="row">
+							<div class="col-7">
+								Catégorie(s) :
+								{% if post.categories is not empty %}
+									{% for category in post.categories %}
+										{% if loop.last %}
+											{{category.name}}
+										{% else %}
+											{{category.name}},
+										{% endif %}
+									{% endfor %}
+								{% else %}
+									Aucune catégorie
+								{% endif %}
+							</div>
+							<div class="col-3">
+								Date de publication :
+								{{post.postedAt|date('d/m/Y')}}
+							</div>
+							<div class="col-2">
+								Auteur :
+								{% if post.user is not empty %}
+									{{post.user.login}}
+								{% else %}
+									Administrateur
+								{% endif %}
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</a>
+	{% endif %}
+{% endfor %}

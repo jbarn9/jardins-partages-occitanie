@@ -1,0 +1,25 @@
+{% extends '@EasyAdmin/default/layout.html.twig' %}
+
+{% block page_title %}
+	{{ 'easy_admin_forbidden'|trans }}
+{% endblock %}
+
+{% block content_header_wrapper %}{% endblock %}
+
+{% block main %}
+	<div style="margin: 30px;">
+		<div class="alert alert-danger">
+			<span class="fa fa-shield" aria-hidden="true"></span>
+			&nbsp;
+			{{ 'easy_admin_forbidden'|trans }}
+		</div>
+	</div>
+{% endblock %}
+
+{% block content_footer %}
+	<div class="form-actions">
+		<button type="button" onclick="javascript:history.back()" class="btn btn-link">
+			{{ 'easy_admin_back'|trans }}
+		</button>
+	</div>
+{% endblock %}

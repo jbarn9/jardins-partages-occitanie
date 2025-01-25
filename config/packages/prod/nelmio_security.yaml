@@ -1,0 +1,3 @@
+nelmio_security:
+  cookie_session:
+    samesite: "strict"

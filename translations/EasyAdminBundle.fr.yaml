@@ -1,0 +1,6 @@
+login_page:
+  username: "Adresse email"
+  password: "Mot de passe"
+  sign_in: "Se connecter"
+  remember_me: "Se souvenir de moi"
+  title: "Administration"

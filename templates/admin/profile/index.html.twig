@@ -1,0 +1,72 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	Gestion du profil | Réseau SDJ
+{% endblock %}
+
+{% block content %}
+	<div
+		class="container-fluid d-flex flex-column mt-lg-5">
+		{# Administrator page Content #}
+		<div class="content_dashboard josefinSans">
+			{% for message in app.flashes('success') %}
+				<div class="flash-notice alert alert-success">
+					{{ message }}
+				</div>
+			{% endfor %}
+			{% for message in app.flashes('error') %}
+				<div class="flash-notice alert alert-danger">
+					{{ message }}
+				</div>
+			{% endfor %}
+			<div class="flex-column">
+				<div class="previous-page">
+					<a href="{{ path('admin') }}" class="nav-link py-lg-4 py-2"><img src="{{asset('img/icons/previous.png')}}" class="previous-icon" alt="Retour icône">Retour au tableau de bord</a>
+				</div>
+				<div class="update-content">
+					<h1>Mon profil</h1>
+					<div class="d-flex flex-row justify-content-between">
+						<div class="d-flex flex-column">
+							<h2>Informations personnelles</h2>
+							<p class="bg-light p-2">Vous êtes
+								<span class="fw-bolder">
+									{% if user.roles[0] == 'ROLE_ADMIN' %}administrateur.rice{% else %}éditeur.rice
+									</span>
+								{% endif %}
+								du réseau
+								<br>
+								<span class="fw-bolder">
+									{{ user.userAsso.name }}
+								</span>
+							</p>
+							<p>Nom :
+								{{ user.lastname }}</p>
+							<p>Prénom :
+								{{ user.firstname }}</p>
+							<p>Email :
+								{{ user.email }}</p>
+							<p>Téléphone :
+								{% if user.mobile is not null %}
+									{{ user.mobile }}
+								{% else %}
+									<span class="text-muted">Non renseigné</span>
+								{% endif %}
+							</p>
+						</div>
+						{# <div class="d-flex flex-column">
+																																					<h2 class="text-center">Image de profil</h2>
+																																					{% if user.img is not null %}
+																																						<div>
+																																							<img src="{{ asset('uploads/profiles/users/mini/300x300-' ~ user.img) }}" alt="Image de profil" class="profile-picture">
+																																						</div>
+																																					{% else %}
+																																						<span class="text-muted">Non renseigné</span>
+																																					{% endif %}
+																																				</div> #}
+					</div>
+					<a href="{{ path('app_admin_profile_update') }}" class="button btn-secondary-green py-2">Modifier</a>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}

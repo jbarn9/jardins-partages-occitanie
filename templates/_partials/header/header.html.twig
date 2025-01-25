@@ -1,0 +1,77 @@
+{# HEADER #}
+<nav class="navbar navbar-expand-lg my-lg-3">
+	<div class="container-fluid mx-0 px-0">
+		<div class="header-container d-flex flex-row ">
+			<div class="container p-0 div-mantra justify-content-center">
+				<div>
+					<p class="mentra jennaSue">{{app.request.attributes.get('header_data').assoMantra[0]}}<br>
+						<span class="line_mentra">{{app.request.attributes.get('header_data').assoMantra[1]}}</span>
+					</p>
+				</div>
+			</div>
+			<div id="navbarText" class="navbar w-100 d-flex flex-row justify-content-around">
+				<div class="container w-100 justify-content-between p-0">
+					<div
+						class="container-fluid flex-row flex-wrap header-buttons navbar-nav mb-lg-0">
+						{# SDJ logo #}
+						<div class="justify-content-center show-hide">
+							<a class="logo" href="{{ path('app_home') }}">
+								<img src="{{ asset('uploads/profiles/SDJ/logo/' ~ app.request.attributes.get('header_data').assoLogo) }}">
+							</a>
+						</div>
+
+						{% if app.request.attributes.get('_route') starts with 'admin' or app.request.attributes.get('_route') starts with 'app_admin' %}
+							<div class="col-lg-12 col-md-4 col-2 align-content-center header-logout">
+								<div class="d-flex justify-content-end">
+									<a class="profile nav-link" href="{{ path('app_logout') }}" role="button">
+										<img src="{{ asset('img/icons/log-out.png') }}" alt="Se déconnecter" class="logo-logout">
+										<div class="link-text">Déconnexion</div>
+									</a>
+								</div>
+							</div>
+						{% else %}
+							{% if app.request.attributes.get('_route') != 'app_login' %}
+								<div class="buttons-header row col">
+									<div
+										class="support-us col-4">
+										{# {{dump(app.request.attributes.get('header_data').assoLinks[0].url)}} #}
+										<button class="main-button" onclick="window.open('{{ app.request.attributes.get('header_data').assoLinks[0].url }}', '_blank')">J'adhére</button>
+									</div>
+									<div class="contact-us col-8">
+										<button class="main-button" onclick="window.location.href='{{ path('app_contact') }}'">Nous contacter</button>
+									</div>
+								</div>
+							{% endif %}
+							{% if app.request.attributes.get('_route') != 'app_login' %}
+								<div class="col-lg-2 col-md-4 col-6 align-content-center header-manage">
+									<div class="d-flex justify-content-end">
+										<a class="profile nav-link" href="{{ path('admin') }}" role="button">
+											<img src="{{ asset('img/icons/gardener.png') }}" alt="Compte" class="logo-user">
+											<div class="link-text">
+												{% if app.user %}
+													Compte
+												{% else %}
+													Connexion
+												{% endif %}
+											</div>
+										</a>
+									</div>
+								</div>
+							{% endif %}
+							{% if app.user %}
+								<div class="col-lg-2 col-md-4 col-2 align-content-center header-logout">
+									<div class="d-flex justify-content-end">
+										<a class="profile nav-link" href="{{ path('app_logout') }}" role="button">
+											<img src="{{ asset('img/icons/log-out.png') }}" alt="Se déconnecter" class="logo-logout">
+											<div class="link-text" style="color: #000;">Logout</div>
+										</a>
+									</div>
+								</div>
+							{% endif %}
+						{% endif %}
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</nav>

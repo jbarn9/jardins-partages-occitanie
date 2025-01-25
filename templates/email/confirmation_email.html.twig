@@ -1,0 +1,16 @@
+<h1>Email de confirmation de votre compte sur le Réseau des Semeurs de Jardins</h1>
+<br>
+<h2>Bonjour
+	{{ login }}
+	!</h2>
+<p>
+	Veuillez confirmer votre adresse email en cliquant sur le lien ci-dessous :
+	<br><br>
+	<a href="{{ absolute_url(path('app_verify_email', {'token' : token})) }}">Confirmer mon email
+	</a>.
+							Attention ! Ce lien expirera dans
+	{{ expiresAtMessageData }}.
+</p>
+<br>
+<br>
+<p>A bientôt sur le Réseau des Semeurs de Jardins =D</p>

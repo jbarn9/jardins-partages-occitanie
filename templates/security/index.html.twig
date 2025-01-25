@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	Connexion | Espace d'Administration
+{% endblock %}
+
+{% block content %}
+	<div class="content_dashboard">
+		<div class="container">
+			<div class="row d-flex justify-content-center">
+				<h2 class="text-center kgSecondChancesSolid">Connexion à l'espace d'administration</h2>
+
+				{% include '@EasyAdmin/page/login.html.twig' with {
+				'error': error,
+				'last_username': last_username,
+				'csrf_token_intention': csrf_token_intention,
+				'target_path': target_path,
+				'username_parameter': username_parameter,
+				'password_parameter': password_parameter,
+				'remember_me_enabled': remember_me_enabled,
+				'remember_me_checked': remember_me_checked,
+				'forgot_password_enabled': forgot_password_enabled,
+				'forgot_password_path': forgot_password_path
+			} %}
+			</div>
+		</div>
+	</div>
+{% endblock %}

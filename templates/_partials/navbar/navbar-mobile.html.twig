@@ -1,0 +1,46 @@
+<div class="container-fluid p-0">
+	<div class="row w-100 justify-content-between">
+		<div class="col-3 p-0">
+			<a class="d-flex flex-column active" href="{{ path('app_home') }}" target="_blank">
+				<div class="nav-link d-flex justify-content-center">
+					<img src="{{ asset('img/icons/nichoir_sans_pied.png') }}" class="icon-navbar" alt="Accueil">
+				</div>
+			</a>
+			<a class="d-flex flex-column active" href="{{ path('app_home') }}">
+				<div class="home menu-txt">
+					<p class="text-wrap">Blog - Accueil</p>
+				</div>
+			</a>
+		</div>
+		<div class="col-3 p-0">
+			<a class="d-flex flex-column" href="{{ path('app_search') }}">
+				<div class="nav-link d-flex justify-content-center">
+					<img src="{{ asset('img/icons/plantain.png') }}" class="icon-navbar" alt="Ressources">
+				</div>
+				<div class="resources menu-txt">
+					<p class="text-wrap">Ressources</p>
+				</div>
+			</a>
+		</div>
+		<div class="col-3 p-0">
+			<a class="d-flex flex-column" href="{{ path('app_google_calendar') }}">
+				<div class="nav-link d-flex justify-content-center">
+					<img src="{{ asset('img/icons/calendar.png') }}" class="icon-navbar" alt="Calendrier">
+				</div>
+				<div class="calendar menu-txt">
+					<p class="text-wrap">Calendrier</p>
+				</div>
+			</a>
+		</div>
+		<div class="col-3 p-0">
+			<a class="d-flex flex-column" href="">
+				<div class="nav-link d-flex justify-content-center">
+					<img src="{{ asset('img/icons/maps.png') }}" class="icon-navbar" alt="Carte des jardins">
+				</div>
+				<div class="map menu-txt">
+					<p class="text-wrap">Carte</p>
+				</div>
+			</a>
+		</div>
+	</div>
+</div>

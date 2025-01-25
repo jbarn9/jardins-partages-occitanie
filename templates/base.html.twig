@@ -1,17 +1,59 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text><text y=%221.3em%22 x=%220.2em%22 font-size=%2276%22 fill=%22%23fff%22>sf</text></svg>">
-        {% block stylesheets %}
-        {% endblock %}
+	<head>
+		<meta charset="UTF-8">
+		<title>
+			{% block title %}
+				Bienvenue
+			{% endblock %}
+		</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		{% block stylesheets %}
+			<link
+			rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text><text y=%221.3em%22 x=%220.2em%22 font-size=%2276%22 fill=%22%23fff%22>sf</text></svg>">
+			{# Si vous voulez les icônes Bootstrap #}
+			<link rel="preconnect" href="https://fonts.googleapis.com">
+			<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+			<link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
+		{% endblock %}
+		{% block javascripts %}
+			{% block importmap %}
+				{{ importmap('app') }}
+			{% endblock %}
+		{% endblock %}
+	</head>
+	<body>
+		{% block body %}
+			<div
+				id="body-container" class="d-flex flex-row">
+				{# Main navigation #}
+				<nav>
+					<div
+						class="d-none d-lg-block h-100">
+						{# Display on large screens #}
+						{% include '_partials/navbar/navbar-lg.html.twig'%}
+					</div>
+					<div
+						id="navbar-mobile" class="container-fluid fixed-bottom d-lg-none">
+						{# Display on medium and little screens #}
+						{% include '_partials/navbar/navbar-mobile.html.twig' %}
+					</div>
+				</nav>
+				<div
+					class="home-container container-fluid flex-column">
+					{# Header #}
+					<header class="w-100 p-0">
+						{% include '_partials/header/header.html.twig' %}
+					</header>
+					{% block container %}
+						{% block content %}{% endblock %}
+						{% include '_partials/footer/footer.html.twig' %}
+					{% endblock %}
+					<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
-        {% block javascripts %}
-            {% block importmap %}{{ importmap('app') }}{% endblock %}
-        {% endblock %}
-    </head>
-    <body>
-        {% block body %}{% endblock %}
-    </body>
+				</div>
+			</div>
+		{% endblock %}
+		{% block js %}{% endblock %}
+	</body>
 </html>

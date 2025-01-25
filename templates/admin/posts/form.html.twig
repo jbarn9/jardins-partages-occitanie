@@ -1,0 +1,39 @@
+{% extends '@EasyAdmin/crud/form_theme.html.twig' %}
+
+{% block _Posts_content_widget %}
+	{{ tinymce_scripts() }}
+	<textarea name="Posts[content]" id="{{id}}" class="tinymce" role="textbox">{{data}}</textarea>
+	<script>
+
+		/*
+** tinymce intialization
+*/
+tinymce.init({
+selector: '.tinymce',
+automatic_uploads: false,
+plugins: [
+// Core editing features
+"n1ed",
+'file-manager',
+'link',
+'colorpicker',
+],
+Flmngr: {
+apiKey: "XYhyonCBh34xJ5MMzLLfyks5"
+},
+toolbar: [
+// Your existing toolbar configuration
+"cut copy | undo redo | searchreplace | bold italic strikethrough underline | forecolor backcolor colorpicker | blockquote | removeformat | code",
+"formatselect| alignleft aligncenter alignright alignjustify | bullist numlist | outdent indent",
+
+// Add these buttons as you wish
+"Upload Flmngr ImgPen | Image ImagePreview2 ImageGallery2"
+],
+height: 1000,
+// images_upload_base_path: '/assets/uploads/posts/',
+link_default_target: '_blank',
+insertdatetime_timeformat: '%H:%M:%S',
+insertdatetime_dateformat: '%d-%m-%Y'
+});
+	</script>
+{% endblock %}

@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	404 - Page non trouvée
+{% endblock %}
+{% block content %}
+	<div class="container main-container-style main-container-style pt-5">
+		<div class="container">
+			<h1>404 - Page non trouvée</h1>
+			<p>Désolés, la page que vous recherchez n'existe pas.</p>
+			<a href="{{ path('app_search') }}" class="nav-link previous-link"><img src="{{ asset('img/icons/previous.png') }}" alt="Logo du Réseau des Semeurs de Jardins" class="img-fluid">Retour à la page d'accueil</a>
+		</div>
+	</div>
+{% endblock %}

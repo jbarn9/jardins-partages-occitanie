@@ -1,0 +1,7 @@
+# Traductions pour la page de login
+login_page:
+  email: "Adresse email"
+  password: "Mot de passe"
+  sign_in: "Se connecter"
+  remember_me: "Se souvenir de moi"
+  title: "Administration"

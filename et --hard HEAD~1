@@ -1,0 +1,35 @@
+[33mcommit 0635702d2de0072e31a0d00b1b9f89c0737edee1[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m)[m
+Author: jbarn9 <47054207+jbarn9@users.noreply.github.com>
+Date:   Sat Nov 30 16:06:39 2024 +0100
+
+    Delete .env
+
+[33mcommit e3341a07fad9ac23b209410bb8fb75f7b8880e2d[m
+Author: jbarn9 <47054207+jbarn9@users.noreply.github.com>
+Date:   Sat Nov 30 16:06:19 2024 +0100
+
+    Delete .env.test
+
+[33mcommit efbf0e3f68c1407f076ef6d2bcbd3b26f167d735[m
+Author: jbarn9 <jbarenne@laposte.net>
+Date:   Sat Nov 30 16:05:23 2024 +0100
+
+    delete .env
+
+[33mcommit 2a88fbfdd63c8e376ceb1f0eb9b4811efacad2ac[m
+Author: jbarn9 <jbarenne@laposte.net>
+Date:   Sat Nov 30 16:04:15 2024 +0100
+
+    installation Symfony 7
+
+[33mcommit ed9070e0d29b86c1c113d2c4262deb03ae57ff74[m[33m ([m[1;32mjulie[m[33m)[m
+Author: jbarn9 <jbarenne@laposte.net>
+Date:   Sat Nov 30 15:50:52 2024 +0100
+
+    Add webapp packages
+
+[33mcommit a6df46310a1c2f5274db88de792ded2be4e468f8[m
+Author: jbarn9 <jbarenne@laposte.net>
+Date:   Sat Nov 30 15:46:49 2024 +0100
+
+    Add initial set of files

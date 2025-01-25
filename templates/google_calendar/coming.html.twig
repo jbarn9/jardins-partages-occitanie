@@ -1,0 +1,52 @@
+{% if error is defined %}
+	<p>{{ error }}</p>
+{% endif %}
+{# <div id="events"></div> #}
+<div id="events" class="container">
+	<h3 class="eventTitle">Evénement à venir</h3>
+	<div class="row row-event">
+		{% set lastDisplayedDate = '' %}
+		{% for event in events %}
+			{% if event.start.dateTime|date('Y-m-d') != lastDisplayedDate %}
+				{% if event.start.dateTime|date('Y-m-d') == 'now'|date('Y-m-d') %}
+					<div class="event-date">Aujourd'hui</div>
+				{% else %}
+					<div class="event-date">{{ event.start.dateTime|format_datetime(locale:'fr', pattern:'EEEE') }}</div>
+				{% endif %}
+				{# Vérifier si la date de l'événement est différente de la dernière date affichée #}
+				{# Afficher le jour #}
+				{% set lastDisplayedDate = event.start.dateTime|date('Y-m-d') %}
+				{# Mettre à jour la dernière date affichée #}
+			{% endif %}
+			<div class="eventsList color-{{event.colorId in [1,3,6] ? event.colorId : 1}}">
+				<div class="container-fluid p-0">
+					<div class="row">
+						<div class="col">
+							<h4>{{ event.summary }}</h4>
+						</div>
+						<div
+							class="col-3 d-flex justify-content-end fw-bold">
+							{# Hours #}
+							{{ event.start.dateTime|date('H:i') }}
+							-
+							{{ event.end.dateTime|date('H:i') }}
+						</div>
+					</div>
+				</div>
+				<p style="font-weight: 600;">{{ event.start.dateTime ?  event.start.dateTime|format_datetime(locale:'fr', pattern:'EEEE d') }}
+					{% if(not event.end.dateTime|date('Y-m-d') is same as(event.start.dateTime|date('Y-m-d'))) %}
+						-
+						{{ event.end.dateTime|format_datetime(locale:'fr', pattern:'MMMM') }}
+					{% endif %}
+				</p>
+				<p>{{ event.description ? event.description|raw : '' }}</p>
+				<p>{{ event.location ? event.location : '' }}</p>
+				<div class="d-flex justify-content-end">
+					<a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text={{ event.summary }}&dates={{ event.start.dateTime|date('Y-m-d H:i:s') }}/{{ event.end.dateTime|date('Y-m-d H:i:s') }}&details={{ event.description }}&location={{ event.location }}" target="_blank">
+						<i class="fa-solid fa-calendar-plus"></i>
+					</a>
+				</div>
+			</div>
+		{% endfor %}
+	</div>
+</div>

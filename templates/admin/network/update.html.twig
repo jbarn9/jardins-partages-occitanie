@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	{{ pageTitle }}
+{% endblock %}
+
+{% block body %}
+	<div
+		id="body-container" class="d-flex flex-row">
+		{# Main navigation #}
+		<nav>
+			<div
+				class="d-none d-lg-block">
+				{# Display on large screens #}
+				{% include 'navbar/navbar-lg.html.twig'%}
+			</div>
+			<div
+				id="navbar-mobile" class="container-fluid fixed-bottom d-lg-none">
+				{# Display on medium and little screens #}
+				{% include 'navbar/navbar-mobile.html.twig' %}
+			</div>
+		</nav>
+		<div
+			class="container-fluid flex-column">
+			{# Header #}
+			<header class="w-100 mx-auto">
+				{% include 'header/header.html.twig' %}
+			</header>
+			<div class="container-fluid d-flex flex-column mt-lg-5">
+				{% for message in app.flashes('success') %}
+					<div class="flash-notice alert alert-success">
+						{{ message }}
+					</div>
+				{% endfor %}
+				{% for message in app.flashes('error') %}
+					<div class="flash-notice alert alert-danger">
+						{{ message }}
+					</div>
+				{% endfor %}
+				<div class="previous-page">
+					<a href="{{ path('app_admin_network', {'id': asso.id}) }}">Retour à la page précédente</a>
+				</div>
+				{# Administrator page Content #}
+				<div class="update-content content_dashboard josefinSans">
+					{{ form_start(form, { 'attr': { 'class': 'form' }, 'method': 'POST', 'action': path('app_admin_network_update', { 'id': asso.id }) }) }}
+					{{ form_widget(form) }}
+					{{ form_end(form) }}
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}

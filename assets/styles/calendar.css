@@ -1,0 +1,200 @@
+.coming-soon{
+    width: 100%!important;
+    margin: 1em 0 5em 0;
+}
+.eventTitle{
+    border-bottom: 3px solid #80808059;
+    padding-bottom: 10px;
+}
+.coming-soon .eventTitle{
+    text-align: center;
+}
+#events .eventsList {
+    border-radius: 10px;
+    padding: 10px;
+    margin: 10px;
+    line-height: 1;
+    padding-left: 40px;
+}
+#events .eventsList.color-1 {
+    background: linear-gradient(to left, rgba(48, 175, 133, 0.21), rgba(48, 175, 133, 0.21) 95% 5%,  var(--turquoise) 95%) ;
+}
+#events .eventsList.color-6 {
+    background: linear-gradient(to left, rgba(255, 193, 7, 0.21), rgba(255, 193, 7, 0.21) 95% 5%,  var(--yellow) 95%) ;
+}
+#events .eventsList.color-3 {
+    background: linear-gradient(to left, rgba(153, 205, 71, 0.21), rgba(153, 205, 71, 0.21) 95% 5%,  var(--green) 95%) ;
+}
+
+.coming-soon .eventsList.color-1 {
+    background: linear-gradient(to left, rgba(48, 175, 133, 0.21), rgba(48, 175, 133, 0.21) 98% 2%, var(--turquoise) 98%)!important;
+}
+.coming-soon .eventsList.color-6 {
+    background: linear-gradient(to left, rgba(255, 193, 7, 0.21), rgba(255, 193, 7, 0.21) 98% 2%,  var(--yellow) 98%)!important;
+}
+.coming-soon .eventsList.color-3 {
+    background: linear-gradient(to left, rgba(153, 205, 71, 0.21), rgba(153, 205, 71, 0.21) 98% 2%, var(--green) 98%)!important;
+}
+
+#events .eventsList p {
+    font-size: 1.2rem;
+    margin-bottom: 3px;
+    font-family: var(--primary-font);
+}
+
+#events .eventsList p:first-child {
+    font-weight: bold;
+}
+#events .row-event{
+    width: 95%;
+    margin-right: 0;
+    margin-left: 0;
+}
+.eventsCard{
+    border-radius: 10px;
+    box-shadow: var(--box-shadow-card);
+    border: 1px solid #5B535342;
+    padding-top: 15px;
+    overflow: auto;
+    max-height: 704px;
+}
+.tooltip {
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+    z-index: 1000;
+    pointer-events: none; /* Pour éviter que la bulle ne bloque les clics */
+}
+.fc-col-header{
+    background: #80808036;
+}
+
+.fc .fc-button{
+    background-color: transparent;
+    color: #000;
+}
+.fc .fc-button-primary:not(:disabled).fc-button-active, .fc .fc-button-primary:not(:disabled):active{
+    background-color: transparent;
+    color: #000;
+}
+    /* Style de la modal */
+    .modal {
+        display: none; /* Masquer par défaut */
+        position: fixed; /* Rester en place */
+        z-index: 1000; /* Au-dessus des autres éléments */
+        left: 0;
+        top: 0;
+        width: 100%; /* Plein écran */
+        height: 100%; /* Plein écran */
+        overflow: auto; /* Activer le défilement si nécessaire */
+        background-color: rgba(0, 0, 0, 0.5); /* Couleur de fond avec transparence */
+        animation: fadeIn 0.3s; /* Animation d'apparition */
+    }
+
+    /* Contenu de la modal */
+    .modal-content {
+        background-color: #fff; /* Couleur de fond de la modal */
+        margin: 15% auto; /* 15% du haut et centré */
+        padding: 20px;
+        border: 1px solid #888;
+        border-radius: 8px; /* Coins arrondis */
+        width: 80%; /* Largeur de la modal */
+        max-width: 500px; /* Largeur maximale */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Ombre */
+        animation: slideIn 0.3s; /* Animation d'apparition */
+    }
+
+    /* Style du titre de la modal */
+    #modalTitle {
+        font-size: 24px; /* Taille de la police */
+        margin-bottom: 15px; /* Espacement en bas */
+        color: #333; /* Couleur du texte */
+    }
+
+    /* Style du bouton de fermeture */
+    .close {
+        color: #aaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+        cursor: pointer; /* Curseur en main */
+    }
+
+    .close:hover,
+    .close:focus {
+        color: #000; /* Couleur au survol */
+        text-decoration: none;
+    }
+
+    /* Style du message de la modal */
+    #eventContent {
+        font-size: 16px; /* Taille de la police */
+        color: #555; /* Couleur du texte */
+    }
+
+    /* Style du bouton OK */
+    button {
+        background-color: #4CAF50; /* Couleur de fond */
+        color: white; /* Couleur du texte */
+        padding: 10px 20px; /* Espacement */
+        border: none; /* Pas de bordure */
+        border-radius: 5px; /* Coins arrondis */
+        cursor: pointer; /* Curseur en main */
+        transition: background-color 0.3s; /* Transition pour le survol */
+    }
+
+    button:hover {
+        background-color: #45a049; /* Couleur au survol */
+    }
+
+.fc-daygrid-event-harness:hover{
+    cursor: pointer;
+}
+
+    /* Style de la barre de défilement */
+::-webkit-scrollbar {
+    width: 12px; /* Largeur de la barre de défilement */
+    height: 12px; /* Hauteur de la barre de défilement horizontal */
+}
+
+/* Style de la piste de la barre de défilement */
+::-webkit-scrollbar-track {
+    background: #f1f1f1; /* Couleur de la piste */
+    border-radius: 10px; /* Coins arrondis */
+}
+
+/* Style de la poignée de la barre de défilement */
+::-webkit-scrollbar-thumb {
+    background: #888; /* Couleur de la poignée */
+    border-radius: 10px; /* Coins arrondis */
+}
+
+/* Style de la poignée au survol */
+::-webkit-scrollbar-thumb:hover {
+    background: #555; /* Couleur de la poignée au survol */
+}
+/* Largeur de la barre de défilement */
+* {
+    scrollbar-width: thin; /* Options : auto, thin, none */
+    scrollbar-color: #888 #f1f1f1; /* Couleur de la poignée et de la piste */
+}
+    /* Animation d'apparition */
+    @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+    }
+
+    /* Animation de glissement */
+    @keyframes slideIn {
+        from { transform: translateY(-50px); opacity: 0; }
+        to { transform: translateY(0); opacity: 1; }
+    }
+@media (max-width: 768px) {
+    .eventsCard{
+        margin-bottom: 100px;
+    }
+    .fc-toolbar.fc-header-toolbar {
+        font-size: 60%
+    }
+}
